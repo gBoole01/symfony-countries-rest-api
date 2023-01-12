@@ -3,10 +3,15 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\CountryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiResource]
+#[ApiResource(operations: [
+new Get(),
+new GetCollection()
+])]
 #[ORM\Entity(repositoryClass: CountryRepository::class)]
 class Country
 {
@@ -15,7 +20,7 @@ class Country
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 2)]
+    #[ORM\Column(length: 255)]
     private ?string $code = null;
 
     #[ORM\Column(length: 255)]
@@ -24,7 +29,7 @@ class Country
     #[ORM\Column(length: 255)]
     private ?string $native = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 255)]
     private ?string $phone = null;
 
     #[ORM\Column(length: 255)]
@@ -33,7 +38,7 @@ class Country
     #[ORM\Column(length: 255)]
     private ?string $capital = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 255)]
     private ?string $currency = null;
 
     #[ORM\Column(length: 255)]
